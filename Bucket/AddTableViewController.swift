@@ -23,8 +23,12 @@ class AddTableViewController: UIViewController {
     
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         guard let item = bucketItem.text else { return }
-        saveItemDeleagte?.saveItem(item: item, at: index)
-        self.dismiss(animated: true, completion: nil)
+        if !item.isEmpty{
+            saveItemDeleagte?.saveItem(item: item, at: index)
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            bucketItem.placeholder = "Please Enter an Item"
+        }
     }
     
     @IBAction func closeView(_ sender: UIButton) {
